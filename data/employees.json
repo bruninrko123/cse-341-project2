@@ -1,0 +1,78 @@
+[
+    {
+      "first_name": "Alice",
+      "last_name": "Smith",
+      "email": "alice.smith@example.com",
+      "position": "Software Engineer",
+      "department": "Engineering",
+      "hire_date": "2021-03-15",
+      "salary": 75000,
+      "address": {
+        "street": "123 Elm St",
+        "city": "New York",
+        "state": "NY",
+        "postal_code": "10001"
+      }
+    },
+    {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@example.com",
+      "position": "Marketing Manager",
+      "department": "Marketing",
+      "hire_date": "2019-07-20",
+      "salary": 65000,
+      "address": {
+        "street": "456 Oak Ave",
+        "city": "Los Angeles",
+        "state": "CA",
+        "postal_code": "90001"
+      }
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Johnson",
+      "email": "emily.johnson@example.com",
+      "position": "HR Specialist",
+      "department": "Human Resources",
+      "hire_date": "2020-05-01",
+      "salary": 55000,
+      "address": {
+        "street": "789 Pine Rd",
+        "city": "Chicago",
+        "state": "IL",
+        "postal_code": "60601"
+      }
+    },
+    {
+      "first_name": "Michael",
+      "last_name": "Brown",
+      "email": "michael.brown@example.com",
+      "position": "Product Designer",
+      "department": "Design",
+      "hire_date": "2022-01-10",
+      "salary": 70000,
+      "address": {
+        "street": "321 Birch Blvd",
+        "city": "San Francisco",
+        "state": "CA",
+        "postal_code": "94105"
+      }
+    },
+    {
+      "first_name": "Sophia",
+      "last_name": "Davis",
+      "email": "sophia.davis@example.com",
+      "position": "Data Analyst",
+      "department": "Data Science",
+      "hire_date": "2023-06-18",
+      "salary": 60000,
+      "address": {
+        "street": "654 Maple Dr",
+        "city": "Austin",
+        "state": "TX",
+        "postal_code": "73301"
+      }
+    }
+  ]
+  

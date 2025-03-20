@@ -1,0 +1,45 @@
+[
+    {
+      "service_name": "Software Development",
+      "category": "Technology",
+      "description": "Custom software development solutions for businesses, including web and mobile applications.",
+      "duration": "3-12 months",
+      "price": 15000
+    },
+    {
+      "service_name": "Marketing Strategy",
+      "category": "Marketing",
+      "description": "Comprehensive marketing plans tailored to business needs, including digital and traditional approaches.",
+      "duration": "2-6 months",
+      "price": 8000
+    },
+    {
+      "service_name": "HR Consultation",
+      "category": "Human Resources",
+      "description": "Employee recruitment, policy creation, and workplace culture development services.",
+      "duration": "1-3 months",
+      "price": 5000
+    },
+    {
+      "service_name": "Product Design",
+      "category": "Design",
+      "description": "UI/UX design services for products, including wireframing, prototyping, and user testing.",
+      "duration": "1-4 months",
+      "price": 12000
+    },
+    {
+      "service_name": "Data Analysis & Insights",
+      "category": "Data Science",
+      "description": "Data collection, cleaning, and visualization services to help businesses make informed decisions.",
+      "duration": "1-3 months",
+      "price": 9000
+    },
+    {
+      "service_name": "Business Intelligence Reporting",
+      "category": "Data Science",
+      "description": "Creation of dashboards and reports to monitor business performance and trends.",
+      "duration": "1-2 months",
+      "price": 7000
+    }
+  ]
+  
