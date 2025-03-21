@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/bruninrko123/cse-341-project2#readme",
   "dependencies": {
+    "body-parser": "^1.20.3",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.12.1",
@@ -26,6 +28,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "http-errors": "^2.0.0"
+    "http-errors": "^2.0.0",
+    "nodemon": "^3.1.9"
   }
 }

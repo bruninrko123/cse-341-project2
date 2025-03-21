@@ -3,7 +3,12 @@ const express = require("express");
 const createError = require("http-errors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger-output.json");
+const bodyParser = require("body-parser");
+
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 const port = 3020;
 const { initializeDB } = require("./data/database");

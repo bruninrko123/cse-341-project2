@@ -1,4 +1,7 @@
 const Service = require("../models/service.js");
+const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
+
 
 const getAllServices = async (req, res, next) => {
   try {
@@ -8,6 +11,28 @@ const getAllServices = async (req, res, next) => {
     next(error);
   }
 };
+
+
+const getSingleService = async (req, res, next) =>{
+
+  if(!ObjectId.isValid(req.params.id)){
+    res.status(400).json({error: "Must use a valid id to find an service"})
+  }
+
+  try {
+    const serviceId = req.params.id;
+
+    const service = await Service.findById(serviceId);
+
+    if(!service){
+      return res.status(404).json({error: "Service not found"})
+    }
+
+    res.status(200).json(service);
+  } catch (error) {
+    next(error);
+  }
+}
 
 const createService = async (req, res, next) => {
     const {service_name, category, description, duration, price} = req.body;
@@ -30,7 +55,56 @@ const createService = async (req, res, next) => {
   }
 };
 
+const updateService = async(req, res, next) =>{
+
+  if(!ObjectId.isValid(req.params.id)){
+    res.status(404).json({error: "Must use a valid id to update a service"});
+  }
+
+  try{
+
+    const serviceId = req.params.id;
+
+    const updatedService = await Service.findByIdAndUpdate(serviceId, req.body, {new: true});
+    
+    if(!updatedService){
+      return res.status(404).json({error: "something went wrong with updating the service"})
+    }
+    return res.status(200).json(updatedService);
+  } catch(error){
+    next(error);
+  }
+}
+
+
+const deleteService = async(req, res, next) =>{
+  if(!ObjectId.isValid(req.params.id)){
+    res.status(404).json({error: "Must use a valid ID to delete a service"});
+  }
+
+  try {
+    const serviceId = req.params.id;
+
+    const deletedService = await Service.findByIdAndDelete(serviceId);
+
+    if(!deletedService){
+      return res.status(404).json({ error: "Service not found"})
+    }
+
+    return res.status(200).json({
+      message: "Service deleted successfully",
+      deletedService,
+    });
+    }
+   catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   getAllServices,
-  createService
+  createService,
+  getSingleService,
+  updateService,
+  deleteService
 };

@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const Database = require("../data/database");
 const Employee = require("../models/employee")
 
+const ObjectId = mongoose.Types.ObjectId;
+
 const getAllEmployees = async (req, res, next) => {
   try {
     
@@ -15,7 +17,27 @@ const getAllEmployees = async (req, res, next) => {
 };
 
 
+const getSingleEmployee = async (req, res, next) =>{
 
+  if(!ObjectId.isValid(req.params.id)){
+    res.status(400).json({error: "Must use a valid id to find an employee"})
+  }
+
+  try{
+  const employeeId = req.params.id;
+
+  const employee = await Employee.findById(employeeId);
+
+  if(!employee){
+    return res.status(404).json({error: "Employee not found"})
+  }
+
+  res.status(200).json(employee);
+  } catch(error){
+    next(error);
+  }
+
+}
 
 
 const createEmployee = async (req, res, next) =>{
@@ -46,7 +68,53 @@ const createEmployee = async (req, res, next) =>{
     }
 }
 
+
+
+const updateEmployee = async(req, res, next) =>{
+
+  if(!ObjectId.isValid(req.params.id)) {
+    res.status(404).json({error: "Must use a valid id to update an employee"});
+  }
+
+  const employeeId = req.params.id;
+
+  const updatedEmployee = await Employee.findByIdAndUpdate(employeeId, req.body, {new: true});
+
+  if(!updatedEmployee){
+    return res.status(404).json({error: "something went wrong with updating the employee"})
+  }
+  res.status(200).json(updatedEmployee)
+}
+
+
+const deleteEmployee = async(req, res, next) =>{
+
+  if(!ObjectId.isValid(req.params.id)){
+    res.status(404).json({error: "Must use a valid ID to delete an employee"});
+  }
+
+  try{
+    const employeeId = req.params.id;
+
+    const deletedEmployee =  await Employee.findByIdAndDelete(employeeId);
+
+    if(!deletedEmployee){
+      return res.status(404).json({ error: "Employee not found"})
+    }
+
+   return res.status(200).json({
+      message: "Employee deleted successfully",
+      deletedEmployee,
+    });
+  } catch(error){
+    next(error);
+  }
+};
+
 module.exports = {
     getAllEmployees,
-    createEmployee
+    createEmployee,
+    updateEmployee,
+    getSingleEmployee,
+    deleteEmployee
   };
