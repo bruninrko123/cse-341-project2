@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Database = require("../data/database");
 const Employee = require("../models/employee")
-
+const {validationResult} = require("express-validator");
 const ObjectId = mongoose.Types.ObjectId;
 
 const getAllEmployees = async (req, res, next) => {
@@ -42,6 +42,13 @@ const getSingleEmployee = async (req, res, next) =>{
 
 const createEmployee = async (req, res, next) =>{
 
+    //validation
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+      return res.status(400).json({errors: errors.array()});
+    }
+
+
     const {first_name, last_name, email, position, department, hire_date, salary, address} = req.body;
 
 
@@ -71,6 +78,12 @@ const createEmployee = async (req, res, next) =>{
 
 
 const updateEmployee = async(req, res, next) =>{
+
+  //validation
+  const errors = validationResult(req);
+  if(!errors.isEmpty()){
+    return res.status(400).json({errors: errors.array()});
+  }
 
   if(!ObjectId.isValid(req.params.id)) {
     res.status(404).json({error: "Must use a valid id to update an employee"});

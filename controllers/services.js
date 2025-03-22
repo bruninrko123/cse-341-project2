@@ -1,7 +1,7 @@
 const Service = require("../models/service.js");
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
-
+const {validationResult} = require("express-validator");
 
 const getAllServices = async (req, res, next) => {
   try {
@@ -35,6 +35,15 @@ const getSingleService = async (req, res, next) =>{
 }
 
 const createService = async (req, res, next) => {
+
+  //validation
+  const errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+      return res.status(400).json({errors: errors.array()});
+    }
+
+
     const {service_name, category, description, duration, price} = req.body;
     
     try {
@@ -56,6 +65,14 @@ const createService = async (req, res, next) => {
 };
 
 const updateService = async(req, res, next) =>{
+
+
+   //validation
+   const errors = validationResult(req);
+
+   if(!errors.isEmpty()){
+     return res.status(400).json({errors: errors.array()});
+   }
 
   if(!ObjectId.isValid(req.params.id)){
     res.status(404).json({error: "Must use a valid id to update a service"});
