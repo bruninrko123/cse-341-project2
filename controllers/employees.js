@@ -89,6 +89,7 @@ const updateEmployee = async(req, res, next) =>{
     res.status(404).json({error: "Must use a valid id to update an employee"});
   }
 
+  try{
   const employeeId = req.params.id;
 
   const updatedEmployee = await Employee.findByIdAndUpdate(employeeId, req.body, {new: true});
@@ -97,7 +98,11 @@ const updateEmployee = async(req, res, next) =>{
     return res.status(404).json({error: "something went wrong with updating the employee"})
   }
   res.status(200).json(updatedEmployee)
+} catch(errror){
+  next(error);
 }
+}
+
 
 
 const deleteEmployee = async(req, res, next) =>{
