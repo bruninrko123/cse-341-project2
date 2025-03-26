@@ -5,7 +5,7 @@
     "description": "API that manages employees and their task",
     "version": "1.0.0"
   },
-  "host": "cse-341-project2-4iok.onrender.com",
+  "host": "://cse-341-project2-4iok.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -108,7 +108,44 @@
             "in": "path",
             "required": true,
             "type": "string"
+            
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema":{
+              "type":"object",
+              "properties":{
+                "first_name": {
+                  "example": "any"
+                },
+                "last_name": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "position": {
+                  "example": "any"
+                },
+                "department": {
+                  "example": "any"
+                },
+                "hire_date": {
+                  "example": "any"
+                },
+                "salary": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                }
+
+              }
+            }
           }
+         
         ],
         "responses": {
           "200": {
@@ -220,6 +257,33 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema":{
+              "type": "object",
+              "properties":{
+                "service_name": {
+                  "example": "any"
+                },
+                "category": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "duration": {
+                  "example": "any"
+                },
+                "price": {
+                  "example": "any"
+                }
+
+              }
+            }
+
           }
         ],
         "responses": {
