@@ -9,15 +9,17 @@ const validateService = [
     check("price").isNumeric().withMessage("Price must be a number")
 ]
 
+const { isAuthenticated } = require("../middleware/authenticate");
+
 router.get("/", serviceControllers.getAllServices);
 
 router.get("/:id", serviceControllers.getSingleService);
 
-router.post("/",validateService,  serviceControllers.createService);
+router.post("/", isAuthenticated, validateService,  serviceControllers.createService);
 
-router.put("/:id",validateService, serviceControllers.updateService);
+router.put("/:id", isAuthenticated, validateService, serviceControllers.updateService);
 
-router.delete("/:id", serviceControllers.deleteService)
+router.delete("/:id", isAuthenticated, serviceControllers.deleteService)
 
 
 

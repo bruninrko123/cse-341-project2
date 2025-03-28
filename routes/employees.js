@@ -10,14 +10,17 @@ const validateEmployee = [
     check("salary").isNumeric().withMessage("Salary must be a number")
 ];
 
+
+const { isAuthenticated } = require("../middleware/authenticate");
+
 router.get("/", employeesController.getAllEmployees)
 
 router.get("/:id", employeesController.getSingleEmployee)
 
-router.post("/",validateEmployee, employeesController.createEmployee)
+router.post("/" ,isAuthenticated ,validateEmployee, employeesController.createEmployee)
 
-router.put("/:id",validateEmployee, employeesController.updateEmployee)
+router.put("/:id" ,isAuthenticated,validateEmployee, employeesController.updateEmployee)
 
-router.delete("/:id", employeesController.deleteEmployee)
+router.delete("/:id", isAuthenticated, employeesController.deleteEmployee)
 
 module.exports = router;
